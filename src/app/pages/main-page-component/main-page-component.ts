@@ -1,11 +1,10 @@
-import {Component, signal} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Component, inject} from '@angular/core';
 import {UserlessMainComponent} from '../../components/userless-main-component/userless-main-component';
 import {UserMainComponent} from '../../components/user-main-component/user-main-component';
+import {AuthService} from '../../services/auth-service';
 
 @Component({
   imports: [
-    RouterLink,
     UserlessMainComponent,
     UserMainComponent
   ],
@@ -14,5 +13,6 @@ import {UserMainComponent} from '../../components/user-main-component/user-main-
   templateUrl: './main-page-component.html',
 })
 export class MainPageComponent {
-  userLoggedIn = signal(true);
+  protected readonly auth = inject(AuthService);
+
 }
