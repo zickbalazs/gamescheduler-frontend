@@ -4,9 +4,10 @@ import {MatToolbar} from '@angular/material/toolbar';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {NavbarComponent} from './components/navbar-component/navbar-component';
 
 @Component({
-  imports: [RouterOutlet, MatToolbar, MatIconButton, MatIcon, MatSidenavContainer, MatSidenav, MatSidenavContent],
+  imports: [RouterOutlet, MatToolbar, MatIconButton, MatIcon, MatSidenavContainer, MatSidenav, MatSidenavContent, NavbarComponent],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

@@ -42,9 +42,15 @@ body {
   flex: 1;
 }
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap-utilities.min.css";
+
 app-root{
   display: flex;
   flex-flow: column;
   background-image: url("assets/main-bg.jpeg");
   flex: 1;
+}
+
+a{
+  color: var(--mat-sys-primary);
 }
