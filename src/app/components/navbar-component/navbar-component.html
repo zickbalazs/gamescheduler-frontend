@@ -7,12 +7,24 @@
     <mat-icon matListItemIcon>trophy</mat-icon>
     <span matListItemTitle>Leagues</span>
   </mat-list-item>
-  <mat-list-item routerLink="/login">
-    <mat-icon matListItemIcon>login</mat-icon>
-    <span matListItemTitle>Log in</span>
-  </mat-list-item>
-  <mat-list-item routerLink="/register">
-    <mat-icon matListItemIcon>person</mat-icon>
-    <span matListItemTitle>Register</span>
-  </mat-list-item>
+  @if (authService.userData()){
+    <mat-list-item>
+      <mat-icon matListItemIcon>person</mat-icon>
+      <span matListItemTitle>My account</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListItemIcon>flag</mat-icon>
+      <span matListItemTitle>My results</span>
+    </mat-list-item>
+  }
+  @else{
+    <mat-list-item routerLink="/login">
+      <mat-icon matListItemIcon>login</mat-icon>
+      <span matListItemTitle>Log in</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/register">
+      <mat-icon matListItemIcon>person</mat-icon>
+      <span matListItemTitle>Register</span>
+    </mat-list-item>
+  }
 </mat-nav-list>
