@@ -1,0 +1,11 @@
+<h3 matDialogTitle>Connect to the session</h3>
+<mat-dialog-content>
+  @if(sessionDetails() | async; as sessionDetail){
+    <p>Server name: Zick GameScheduler {{sessionId}}</p>
+    <p>Server port: {{sessionDetail.port}}</p>
+    <p>Server password: {{sessionDetail.password}}</p>
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matDialogClose matButton>OK</button>
+</mat-dialog-actions>

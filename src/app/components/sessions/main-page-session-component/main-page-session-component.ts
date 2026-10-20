@@ -1,4 +1,4 @@
-import {Component, computed, inject, input, OnInit} from '@angular/core';
+import {Component, computed, inject, input, OnInit, signal} from '@angular/core';
 import {RegistrationDto} from '../../../dtos/registration-dto';
 import {
   MatCard,
@@ -14,6 +14,8 @@ import {AsyncPipe, DatePipe} from '@angular/common';
 import {MatTooltip} from '@angular/material/tooltip';
 import {MainPageUserService} from '../../../services/main-page-user-service';
 import {map} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {SessionConnectionComponent} from '../../session-connection-component/session-connection-component';
 
 @Component({
   imports: [
@@ -33,6 +35,20 @@ import {map} from 'rxjs';
 })
 export class MainPageSessionComponent {
   registration = input.required<RegistrationDto>();
+  refreshSignal = signal(0);
   private readonly service = inject(MainPageUserService);
-  protected readonly regData = computed(()=>this.service.GetRegData(this.registration()));
+  private readonly dialog = inject(MatDialog);
+  protected readonly regData = computed(()=>{
+    this.refreshSignal();
+    return this.service.GetRegData(this.registration())
+  });
+
+  GetSessionData(){
+    this.dialog.open(SessionConnectionComponent, {data: this.registration().sessionId});
+  }
+
+  CancelReg(){
+    this.service.UnregisterFromSession(this.registration().id).subscribe();
+  }
+
 }

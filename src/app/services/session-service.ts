@@ -2,6 +2,7 @@ import {inject, Service} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {SessionDto} from '../dtos/session-dto';
 import {environment} from '../../environments/environment';
+import {SessionConnectionDto} from '../dtos/session-connection-dto';
 
 @Service()
 export class SessionService {
@@ -15,5 +16,11 @@ export class SessionService {
   }
   RegisterToSession(sessionId: string, carId: string){
     return this.http.post(environment.ApiUrl+`Session/register/${sessionId}`, {carId}, {withCredentials: true});
+  }
+  GetSessionConnection(sessionId: string){
+    return this.http.get<SessionConnectionDto>(environment.ApiUrl+`Session/connect/${sessionId}`, {withCredentials: true});
+  }
+  UnregisterSession(regId: string){
+    return this.http.delete(environment.ApiUrl+`Registration/${regId}`, {withCredentials: true});
   }
 }

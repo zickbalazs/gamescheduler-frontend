@@ -9,12 +9,22 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>Start in:</p>
       <p>Your car: {{reg.car}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button matButton
-              [disabled]="!reg.canConnect" >Connection Details</button>
+              [disabled]="!reg.canConnect"
+              (click)="GetSessionData()">
+        @if(reg.canConnect){
+          Connection Details
+        }
+        @else{
+          Please wait for session start.
+        }
+      </button>
+      @if (!reg.canConnect){
+        <button matButton (click)="CancelReg()">Cancel</button>
+      }
     </mat-card-actions>
   </mat-card>
 

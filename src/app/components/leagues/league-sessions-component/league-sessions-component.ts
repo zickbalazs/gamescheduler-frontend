@@ -8,6 +8,7 @@ import {LeagueCard} from '../../../models/league-card.model';
 import {MatButton} from '@angular/material/button';
 import {SelectCarComponent} from '../select-car-component/select-car-component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MainPageUserService} from '../../../services/main-page-user-service';
 
 @Component({
   imports: [
@@ -32,6 +33,7 @@ export class LeagueSessionsComponent {
   snackbar = inject(MatSnackBar);
   league: LeagueCard = inject(MAT_DIALOG_DATA);
   sessionService = inject(SessionService);
+
   leagueId = signal(this.league.id);
   sessions = computed(()=>this.sessionService.GetAvailableSessions(this.leagueId()));
 
@@ -46,5 +48,4 @@ export class LeagueSessionsComponent {
         })
     })
   }
-
 }

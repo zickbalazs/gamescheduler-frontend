@@ -1,13 +1,13 @@
 <h2>Welcome back {{auth.userData()?.name}}!</h2>
-
-@if(regService.hasRegs()){
+@if (registrations() | async; as regs){
   <h3>Your registrations</h3>
   <div class="regs">
-    @for(reg of regService.userRegs(); track reg){
+    @for(reg of regs; track reg){
       <app-main-page-session-component [registration]="reg" />
     }
   </div>
 }
+
 @else{
   <h3>You have not registered to any sessions yet, check out the <a routerLink="/leagues">leagues</a>.</h3>
 }
