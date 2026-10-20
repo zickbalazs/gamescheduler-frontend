@@ -11,5 +11,7 @@ export class VehicleService {
     return this.httpClient.get<VehicleDto>(environment.ApiUrl+`Vehicle/byId/${id}`)
   }
 
-
+  GetByClass(classId: string){
+    return this.httpClient.get<VehicleDto[]>(environment.ApiUrl+`Vehicle/class/${classId}`);
+  }
 }

@@ -13,5 +13,7 @@ export class SessionService {
   GetAvailableSessions(leagueId: string){
     return this.http.get<SessionDto[]>(environment.ApiUrl+`Session/league/available/${leagueId}`)
   }
-
+  RegisterToSession(sessionId: string, carId: string){
+    return this.http.post(environment.ApiUrl+`Session/register/${sessionId}`, {carId}, {withCredentials: true});
+  }
 }

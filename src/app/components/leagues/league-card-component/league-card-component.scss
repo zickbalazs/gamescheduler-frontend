@@ -1,0 +1,12 @@
+p, h3, span{
+  color: black;
+}
+.classes{
+  display: flex;
+  gap: 0.5rem;
+}
+.rClass{
+  background-color: var(--mat-sys-primary);
+  padding: 0.25rem;
+  color: var(--mat-sys-on-primary);
+}

@@ -1,0 +1,41 @@
+<h3 matDialogTitle>Select a car</h3>
+<mat-dialog-content>
+  <mat-stepper orientation="vertical" >
+    <mat-step [completed]="selectedClassId()!=''">
+      <ng-template matStepLabel>Select a racing class</ng-template>
+      <ng-template matStepContent>
+        <mat-form-field>
+          <mat-label>Select class</mat-label>
+          <mat-select (selectionChange)="UpdateSelection($event.value)">
+            @for(cls of classes; track cls){
+              <mat-option [value]="cls">{{cls}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+    </mat-step>
+    <mat-step [editable]="selectedClassId() != ''">
+      <ng-template matStepLabel>Select a car</ng-template>
+      <ng-template matStepContent>
+        @if (selectedClassId() != ''){
+          <mat-form-field>
+            <mat-label>Select car</mat-label>
+            @if (classCars() | async; as cars){
+              <mat-select [(value)]="selectedCarId">
+                @for(car of cars; track car){
+                  <mat-option [value]="car.id">{{car.manufacturer}}{{car.model}}</mat-option>
+                }
+              </mat-select>
+            }
+          </mat-form-field>
+        }
+        @else{
+          Select a racing class first!
+        }
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton [matDialogClose]="selectedCarId">OK</button>
+</mat-dialog-actions>

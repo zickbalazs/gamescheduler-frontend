@@ -1,0 +1,25 @@
+<h3 mat-dialog-title>League Name</h3>
+<mat-dialog-content>
+  @if (sessions() | async; as sess){
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Start</th>
+          <th>Participants</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(session of sess; track session){
+          <tr>
+            <td>{{session.id}}</td>
+            <td>{{session.start | date : 'long'}}</td>
+            <td>{{session.registrationIds.length}}</td>
+            <td><button matButton (click)="RegisterToSession(session.id)">Register</button></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</mat-dialog-content>

@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h3 class="m-0">{{league().name}}</h3>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ league().start | date }} - {{league().end | date}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Current track: {{league().trackName}}</p>
+    <div class="classes">
+      @for(cls of league().classes; track cls){
+        <span class="rClass">{{cls}}</span>
+      }
+    </div>
+  </mat-card-content>
+  @if (league().hasActive){
+    <mat-card-actions>
+      <button matButton (click)="ViewSessions()">View Sessions</button>
+    </mat-card-actions>
+  }
+</mat-card>
