@@ -16,6 +16,10 @@
       <mat-icon matListItemIcon>flag</mat-icon>
       <span matListItemTitle>My results</span>
     </mat-list-item>
+    <mat-list-item (click)="Logout()">
+      <mat-icon matListItemIcon>logout</mat-icon>
+      <span matListItemTitle>Log out</span>
+    </mat-list-item>
   }
   @else{
     <mat-list-item routerLink="/login">

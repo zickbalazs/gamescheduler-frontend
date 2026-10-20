@@ -19,4 +19,8 @@ import {AuthService} from '../../services/auth-service';
 })
 export class NavbarComponent {
   protected readonly authService = inject(AuthService);
+
+  Logout(){
+    this.authService.tryLogout();
+  }
 }
