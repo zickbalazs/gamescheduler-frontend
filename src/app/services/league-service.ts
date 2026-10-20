@@ -12,5 +12,8 @@ export class LeagueService {
     return this.httpClient.get<LeagueDto>(environment.ApiUrl+`League/${leagueId}`);
   }
 
+  GetLeagues(){
+    return this.httpClient.get<LeagueDto[]>(environment.ApiUrl+'League');
+  }
 
 }
