@@ -10,4 +10,8 @@ export class SessionService {
   GetSession(sessionId: string){
     return this.http.get<SessionDto>(environment.ApiUrl+`Session/byId/${sessionId}`);
   }
+  GetAvailableSessions(leagueId: string){
+    return this.http.get<SessionDto[]>(environment.ApiUrl+`Session/league/available/${leagueId}`)
+  }
+
 }
